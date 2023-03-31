@@ -13,6 +13,8 @@ specifiers:
   prettier: ^2.5.1
   quasar: ^2.6.0
   vue: ^3.0.0
+  vue-jsonp: ^2.0.0
+  vue-native-websocket: ^2.0.15
   vue-router: ^4.0.0
 
 dependencies:
@@ -21,6 +23,8 @@ dependencies:
   pinia: 2.0.29_vue@3.2.45
   quasar: 2.11.5
   vue: 3.2.45
+  vue-jsonp: 2.0.0
+  vue-native-websocket: 2.0.15
   vue-router: 4.1.6_vue@3.2.45
 
 devDependencies:
@@ -2760,6 +2764,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-jsonp/2.0.0:
+    resolution: {integrity: sha512-Mzd9GNeuKP5hHFDWZNMWOsCuMILSkA6jo2l4A02wheFz3qqBzH7aSEFTey1BRCZCLizlaf1EqJ5YUtF392KspA==}
+    dev: false
+
+  /vue-native-websocket/2.0.15:
+    resolution: {integrity: sha512-i3UvRL99rY8ytV0VJzcWDwY3fRPoeh2fGYvB9862JocEQOx/oCw/VtPIUwP4tSzmzJvJZNkvP71wfhfS1sVhxQ==}
+    dev: false
 
   /vue-router/4.1.6_vue@3.2.45:
     resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
