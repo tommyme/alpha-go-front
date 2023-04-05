@@ -87,9 +87,13 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
 
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      vitePlugins: [
+        ['vite-plugin-pages', {
+          // dirs: [
+          //   // { dir: 'src/pages/main', baseRoute: '' },
+          // ]
+        }]
+      ]
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer

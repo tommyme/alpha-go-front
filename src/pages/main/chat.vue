@@ -2,15 +2,44 @@
 import { onMounted, ref, reactive } from 'vue';
 import { wsUrl } from 'src/utils/main'
 import { api } from 'boot/axios'
+import { useQuasar } from 'quasar';
+import { useRouter } from 'vue-router';
 
+const $q = useQuasar()
 const ws = new WebSocket(wsUrl)
+const router = useRouter()
 ws.addEventListener('message', (event) => {
   messages.push(event.data)
 })
 const messages = reactive([])
 
+function checkCookie() {
+  var cookies = document.cookie.split(';');
+  for (var i = 0; i < cookies.length; i++) {
+    var name = cookies[i].split('=')[0].trim();
+    if (name === 'sess') {
+      return true;
+    }
+  }
+  return false;
+}
+
 onMounted(
   () => {
+    // 检查是否有sess key
+    if (!checkCookie()) {
+      // 没有 进行alert
+      $q.dialog({
+        title: '提示 聊天为登录功能',
+        message: '请先登录'
+      }).onOk(() => {
+        router.push({ path: "/main/login" })
+      }).onCancel(() => {
+        router.push({ path: "/main/login" })
+      }).onDismiss(() => {
+        router.push({ path: "/main/login" })
+      })
+    }
     api.get('/state/messages', {
       withCredentials: true
     })

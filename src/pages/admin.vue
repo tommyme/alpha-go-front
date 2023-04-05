@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> 围棋资讯平台 </q-toolbar-title>
+        <q-toolbar-title> 围棋资讯平台后台 </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -30,46 +30,28 @@ import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
   {
-    title: "home page",
-    caption: "回到主页",
-    icon: "home",
-    link: "#/",
-  },
-  {
-    title: "2022棋手排名",
-    caption: "职业棋手排名信息",
-    icon: "school",
-    link: "#/people",
-  },
-  {
-    title: "play Go",
-    caption: "看棋谱",
-    icon: "code",
-    link: "#/play",
-  },
-  {
-    title: "Article",
-    caption: "view Article",
-    icon: "book",
-    link: "#/article",
-  },
-  {
-    title: "Live",
-    caption: "看看热门围棋直播",
-    icon: "rss_feed",
-    link: "#/live",
-  },
-  {
-    title: "围棋咨询",
-    caption: "咨询围棋相关事项",
-    icon: "public",
-    link: "#/chat",
-  },
-  {
-    title: "Quasar Awesome",
-    caption: "Community Quasar projects",
+    title: "登录",
+    caption: "管理员登录",
     icon: "favorite",
-    link: "https://awesome.quasar.dev",
+    link: "#/admin/login",
+  },
+  {
+    title: "直播推荐管理",
+    caption: "直播",
+    icon: "favorite",
+    link: "#/admin/live",
+  },
+  {
+    title: "文章列表",
+    caption: "文章",
+    icon: "favorite",
+    link: "#/admin/article/list",
+  },
+  {
+    title: "添加文章",
+    caption: "文章",
+    icon: "favorite",
+    link: "#/admin/article/add",
   },
 ];
 
