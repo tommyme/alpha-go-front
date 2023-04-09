@@ -8,7 +8,7 @@ const articleTitle = ref("")
 const articleContent = ref("")
 
 onMounted(() => {
-  api.get('article/' + route.params.id).then(resp => resp.data).then(data => {
+  api.get('/stateless/article/' + route.params.id).then(resp => resp.data).then(data => {
     articleContent.value = data.content
     articleTitle.value = data.title
   })

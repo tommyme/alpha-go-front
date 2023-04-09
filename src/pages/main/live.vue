@@ -1,30 +1,35 @@
 <script setup>
 
 import axios from 'axios';
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 
 import { useQuasar } from 'quasar';
+import { api } from 'src/boot/axios';
 
-const data = ['2051617240', '525952604', '526645204']
+const data = reactive([])
 const youtubers = reactive([])
 const $q = useQuasar()
 onMounted(
   () => {
-
-    data.forEach(mid => {
-      let url = `http://localhost:8000/relay?url=https://api.bilibili.com/x/space/acc/info?mid=${mid}`
-      axios.get(url).then(response => {
-        return response.data.data
-      })
-        .then(jsdata => {
-          youtubers.push({
-            name: jsdata.name,
-            face: jsdata.face,
-            live_room: jsdata.live_room
-          })
+    api.get('/stateless/live').then((resp) => resp.data).then((respdata) => {
+      console.log(respdata)
+      Object.assign(data, respdata)
+      data.forEach(item => {
+        let url = `http://localhost:8000/stateless/relay?url=https://api.bilibili.com/x/space/acc/info?mid=${item.uid}`
+        axios.get(url).then(response => {
+          return response.data.data
         })
+          .then(jsdata => {
+            youtubers.push({
+              name: jsdata.name,
+              face: jsdata.face,
+              live_room: jsdata.live_room
+            })
+          })
+      })
+      console.log(youtubers)
     })
-    console.log(youtubers)
+
 
   }
 )

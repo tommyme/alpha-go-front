@@ -7,7 +7,7 @@ const articles = ref([])
 const router = useRouter()
 
 onMounted(() => {
-  api.get("articles").then((resp) => resp.data).then((data) => articles.value = data)
+  api.get("/stateless/articles").then((resp) => resp.data).then((data) => articles.value = data)
 })
 
 const viewArticle = (id) => {

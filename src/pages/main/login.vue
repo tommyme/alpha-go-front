@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import { api } from 'boot/axios'
 import { useRouter } from 'vue-router';
+import { useInfoStore } from 'src/stores/info';
+const infoStore = useInfoStore()
 const router = useRouter()
 const username = ref('aaa')
 const passwd = ref('root')
@@ -17,7 +19,11 @@ const login = () => {
   }
   ).then(
     resp => {
-      console.log(resp)
+      console.log(resp.data)
+      infoStore.userId = resp.data.userId
+      infoStore.userName = resp.data.userName
+      infoStore.admin = resp.data.admin
+      console.log(infoStore)
       router.push({ path: '/', })
     }
   ).catch(err => {

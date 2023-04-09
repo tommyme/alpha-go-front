@@ -4,12 +4,23 @@ import { wsUrl } from 'src/utils/main'
 import { api } from 'boot/axios'
 import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
+import { useInfoStore } from 'src/stores/info';
 
+const infoStore = useInfoStore()
 const $q = useQuasar()
 const ws = new WebSocket(wsUrl)
 const router = useRouter()
 ws.addEventListener('message', (event) => {
-  messages.push(event.data)
+  // 来消息了
+  console.log("ws message")
+  console.log(event)
+  // window._event = event
+  // event.data is a string.
+  messages.push({
+    msg: event.data,
+    userId: "index",
+    userName: "官方客服"
+  })
 })
 const messages = reactive([])
 
@@ -39,6 +50,7 @@ onMounted(
       }).onDismiss(() => {
         router.push({ path: "/main/login" })
       })
+      return
     }
     api.get('/state/messages', {
       withCredentials: true
@@ -46,6 +58,7 @@ onMounted(
       .then(response => response.data)
       .then(data => {
         Object.assign(messages, data)
+        console.log(data)
       })
   }
 )
@@ -56,6 +69,11 @@ const sendMessage = () => {
     return
   }
   ws.send(msg2send.value)
+  messages.push({
+    msg: msg2send.value,
+    userId: infoStore.userId,
+    userName: infoStore.userName,
+  })
   msg2send.value = ""
 }
 </script>
@@ -66,7 +84,7 @@ const sendMessage = () => {
       <div class="q-pa-md row justify-center col-12">
         <div class="col-6">
           <q-chat-message v-for="item, idx in messages" :key="idx" :name="item.userName" :text="[item.msg]"
-            :sent="item.userName == 'admin'" />
+            :sent="item.userName == '官方客服'" />
         </div>
       </div>
       <q-card-section class="col-8 row items-center">

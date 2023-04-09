@@ -71,6 +71,12 @@ const linksList = [
     icon: "favorite",
     link: "#/main/login",
   },
+  {
+    title: "个人信息",
+    caption: "个人信息页面",
+    icon: "favorite",
+    link: "#/main/self",
+  },
 ];
 
 export default defineComponent({

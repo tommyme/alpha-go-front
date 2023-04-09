@@ -6,7 +6,7 @@ const title = ref("")
 const editor = ref("")
 
 const submit = () => {
-  api.post("admin/articles/add", {
+  api.post("/admin/article/add", {
     title: title.value,
     content: editor.value
   })
