@@ -492,6 +492,10 @@ eidogo.Player.prototype = {
         
         var success = function(req) {
             var data = req.responseText.replace(/^( |\t|\r|\n)*/, "");
+            // change encoding
+            const encoder = new TextEncoder();
+            const utf8Array = encoder.encode(xhr.responseText);
+            data = new TextDecoder().decode(utf8Array);
             // infer the kind of file we got
             if (data.charAt(0) == '(') {
                 // SGF
