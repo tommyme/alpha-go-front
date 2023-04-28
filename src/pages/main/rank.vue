@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue';
+
 let table = {
   title: "职业选手信息表",
   columns: [
@@ -98,14 +100,27 @@ let table = {
   ],
   rowKey: "name",
 };
+
+const filter = ref("")
 </script>
 
 <template>
   <q-page class="flex flex-center">
-    <q-table :title="table.title" :rows="table.rows" :columns="table.columns" :row-key="table.rowKey" />
+    <q-table class="rank-table" :title="table.title" :rows="table.rows" :columns="table.columns" :row-key="table.rowKey"
+      :filter="filter" rows-per-page-label="每页行数" :rows-per-page-options="[10, 20, 30]">
+      <template v-slot:top-right>
+        <q-input bordered dense debounce="300" v-model="filter" placeholder="Search">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
+    </q-table>
   </q-page>
 </template>
 
 <style scoped>
-
+.rank-table {
+  width: 50%;
+}
 </style>

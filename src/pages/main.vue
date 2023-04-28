@@ -12,7 +12,7 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+        <q-item-label header> 快捷链接 </q-item-label>
 
         <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
       </q-list>
@@ -30,7 +30,7 @@ import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
   {
-    title: "home page",
+    title: "主页",
     caption: "回到主页",
     icon: "home",
     link: "#/main",
@@ -42,19 +42,19 @@ const linksList = [
     link: "#/main/rank",
   },
   {
-    title: "play Go",
+    title: "棋谱播放/自我博弈",
     caption: "看棋谱",
     icon: "code",
     link: "#/main/go",
   },
   {
-    title: "Article",
-    caption: "view Article",
+    title: "围棋资讯",
+    caption: "查看围棋资讯",
     icon: "book",
     link: "#/main/article/list",
   },
   {
-    title: "Live",
+    title: "直播推荐",
     caption: "看看热门围棋直播",
     icon: "rss_feed",
     link: "#/main/live",
@@ -66,7 +66,7 @@ const linksList = [
     link: "#/main/chat",
   },
   {
-    title: "登录",
+    title: "登录/注册",
     caption: "登录以使用更多功能",
     icon: "favorite",
     link: "#/main/login",

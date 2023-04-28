@@ -17,7 +17,7 @@ const submit = () => {
   <q-page class="flex column">
     <div class="row q-pa-md">
       <div class="col-6">
-        <q-input v-model="title" outlined label="title"></q-input>
+        <q-input v-model="title" outlined label="文章标题"></q-input>
       </div>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@ const submit = () => {
     </div>
     <div class="row q-pa-md">
       <div>
-        <q-btn label="submit" @click="submit"></q-btn>
+        <q-btn label="添加文章" @click="submit"></q-btn>
       </div>
     </div>
   </q-page>

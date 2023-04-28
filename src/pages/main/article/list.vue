@@ -11,7 +11,7 @@ onMounted(() => {
 })
 
 const viewArticle = (id) => {
-  router.push({ path: `article/${id}` })
+  router.push({ path: `view/${id}` })
 }
 </script>
 
@@ -21,7 +21,7 @@ const viewArticle = (id) => {
       <q-list bordered class="rounded-borders">
         <q-item v-for="article, idx in articles" :key="idx">
           <q-item clickable v-ripple @click="viewArticle(article.id)">
-            <q-item-section>{{ article.title }}</q-item-section>
+            <q-item-section class="text-h5">{{ article.title }}</q-item-section>
           </q-item>
         </q-item>
       </q-list>

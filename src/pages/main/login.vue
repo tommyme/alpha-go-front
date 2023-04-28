@@ -35,9 +35,12 @@ const login = () => {
 
 <template>
   <div class="column flex-center q-gutter-lg" style="height: 100vh">
-    <q-input outlined v-model="username" label="username" />
-    <q-input outlined v-model="passwd" label="password" />
-    <q-btn @click="login" label="login"></q-btn>
+    <q-input outlined v-model="username" label="用户名" />
+    <q-input outlined v-model="passwd" label="密码" />
+    <div class="row">
+      <q-btn class="q-ma-md" @click="login" label="登录"></q-btn>
+      <q-btn class="q-ma-md" @click="login" label="注册"></q-btn>
+    </div>
   </div>
 </template>
 

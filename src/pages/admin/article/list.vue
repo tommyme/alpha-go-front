@@ -11,7 +11,7 @@ onMounted(() => {
 })
 
 const viewArticle = (id) => {
-  router.push({ path: `/admin/article/${id}` })
+  router.push({ path: `/main/article/view/${id}` })
 }
 
 const deleteArticle = (id) => {
@@ -21,14 +21,14 @@ const deleteArticle = (id) => {
 </script>
 
 <template>
-  <q-page class="row">
-    <div class="col-8 row justify-center" style="flex-grow: 1;">
+  <q-page class="row justify-center items-center">
+    <div class="col-6 row">
       <q-list bordered class="rounded-borders col-10">
         <q-item v-for="article, idx in articles" :key="idx" clickable v-ripple @click="viewArticle(article.id)"
           class="justify-evenly">
           <q-item-section>{{ article.title }}</q-item-section>
           <q-item-section class="col-2">
-            <q-btn label="del" color="primary" @click="deleteArticle(article.id)"></q-btn>
+            <q-btn label="删除文章" color="primary" @click="deleteArticle(article.id)"></q-btn>
           </q-item-section>
         </q-item>
       </q-list>
