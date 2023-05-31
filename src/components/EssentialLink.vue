@@ -1,41 +1,15 @@
 <template>
-  <q-item clickable tag="a" :href="link">
-    <q-item-section v-if="icon" avatar>
-      <q-icon :name="icon" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
-    </q-item-section>
-  </q-item>
+  <LinkItem
+    v-for="(item, idx) in props.items"
+    :key="idx"
+    :data="item.data"
+    :link="item.link"
+    :children="item.children"
+  ></LinkItem>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'EssentialLink',
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-
-    caption: {
-      type: String,
-      default: ''
-    },
-
-    link: {
-      type: String,
-      default: '#'
-    },
-
-    icon: {
-      type: String,
-      default: ''
-    }
-  }
-})
+<script setup>
+import { defineProps } from 'vue'
+import LinkItem from './LinkItem.vue'
+const props = defineProps(['items'])
 </script>

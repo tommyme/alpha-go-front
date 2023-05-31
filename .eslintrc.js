@@ -6,6 +6,8 @@ module.exports = {
 
   parserOptions: {
     ecmaVersion: '2021', // Allows for the parsing of modern ECMAScript features
+    parser: require.resolve('@typescript-eslint/parser'),
+    extraFileExtensions: ['.vue']
   },
 
   env: {
@@ -18,6 +20,7 @@ module.exports = {
   extends: [
     // Base ESLint recommended rules
     // 'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
 
     // Uncomment any of the lines below to choose desired strictness,
     // but leave only one uncommented!
@@ -32,6 +35,7 @@ module.exports = {
   ],
 
   plugins: [
+    '@typescript-eslint',
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     // required to lint *.vue files
     'vue',
